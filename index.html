@@ -12,6 +12,7 @@
     --navy: #123a68;
     --red: #d92b1c;
     --blue: #0168b7;
+    --photo-opacity: .16;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -24,6 +25,7 @@
       --navy: #1c4f8c;
       --red: #ff5b45;
       --blue: #4fa3e6;
+      --photo-opacity: .08;
     }
   }
   :root[data-theme="dark"]{
@@ -36,6 +38,7 @@
     --navy: #1c4f8c;
     --red: #ff5b45;
     --blue: #4fa3e6;
+    --photo-opacity: .08;
   }
 
   *{ box-sizing: border-box; }
@@ -43,6 +46,17 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+    position: relative;
+  }
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url("containers-bg.jpg") center 30% / cover no-repeat;
+    filter: grayscale(.35) brightness(1.4) saturate(.85);
+    opacity: var(--photo-opacity);
+    pointer-events: none;
   }
   .wrap{ max-width: 980px; margin: 0 auto; padding: 0 24px 56px; }
 
